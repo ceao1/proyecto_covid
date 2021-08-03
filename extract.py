@@ -29,5 +29,4 @@ ruta_archivo = './data/data_cruda/' + nombre_archivo
 #se crea el archivo con el nombre asociado al día descargado
 with open(ruta_archivo, 'w') as fp:
     json.dump(resultado.json(), fp)
-
-
+    
