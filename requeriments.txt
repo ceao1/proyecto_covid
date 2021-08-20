@@ -1,0 +1,5 @@
+pandas
+requests
+datetime
+dash
+dash_bootstrap_components
