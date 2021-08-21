@@ -23,8 +23,6 @@ resultado = requests.get("https://www.datos.gov.co/resource/gt2j-8ykr.json?$limi
 nombre_archivo = str(ayer.date()).replace('-', '') + '.json'
 #nombre_archivo = str(otro_dia.date()).replace('-', '') + '.json'
 
-os.chdir('/home/ceao/Documents/proyecto_covid')
-
 #se crea la ruta para guardar el archivo
 ruta_archivo = './data/data_cruda/' + nombre_archivo
 
