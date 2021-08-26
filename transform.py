@@ -15,10 +15,7 @@ for archivo in archivos:
     temp_df_agrupado.to_csv('./data_resumida/resumen_' + archivo.replace('.json', '.csv'), index=False)
     #guardo el ultimo archivo para tenerlo de referencia en los formatos y columnas por si se necesita cambiar la agrupacion mas adelante
     os.chdir('./data_cruda')
-    if archivo == archivos[-1]:
-        continue
-    else:
-        os.remove(archivo)
+    os.remove(archivo)
 
 os.chdir('..')
 os.chdir('./data_resumida')
@@ -35,9 +32,4 @@ for resumen in resumenes:
                 continue
             else:
                 consolidado.write(line)
-    
-    
-    if resumen == resumenes[-1]:
-        continue
-    else:
-        os.remove('./data_resumida/'+resumen)
+    os.remove('./data_resumida/'+resumen)
