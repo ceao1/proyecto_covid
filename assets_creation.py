@@ -1,3 +1,6 @@
+from branca.utilities import legend_scaler
+from numpy.lib.function_base import quantile
+
 import pandas as pd
 import numpy as np
 import geopandas as gpd
@@ -54,6 +57,8 @@ mapa_municipios = mapa_municipios.merge(how='left', right=df_ultimo[['MPIO_CDPMP
 
 mapa = folium.Map(location=[4.3, -73.40], tiles='cartodbpositron', zoom_start=5.5, min_zoom=6, max_zoom=7)
 
+bins = list(df_ultimo['casos_por_millon'].quantile([0, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1]))
+
 capa = folium.Choropleth(
     geo_data=mapa_municipios, 
     name="Casos por millon - Municipio", 
@@ -61,12 +66,12 @@ capa = folium.Choropleth(
     columns=['MPIO_CDPMP', 'casos_por_millon'],
     key_on='feature.properties.MPIO_CDPMP',
     smooth_factor=0,
-    fill_color='Reds'
+    fill_color='OrRd',
+    bins=bins
     )
 
 capa.add_to(mapa)
 capa.geojson.add_child(folium.features.GeoJsonTooltip(['MPIO_CNMBR', 'casos_por_millon'], labels=False))
-
 folium.LayerControl().add_to(mapa)
 
 
