@@ -30,6 +30,7 @@ Esta tecnología anteriormente mencionada se ve representada en la siguiente arq
 
 [![Arquitectura](./images/covid_arq.png)]
 
+- (0) Existen dos funciones lambda que prenden y apagan las instancias utilizadas para aminorar el consumo, adicionalmente en paralelo una función lambda guarda archivos .json independientes para cada uno de los días en un bucket de S3, por si en algun momento es necesario restaurar la información.
 - (1) Instancia EC2 t2.micro (Hace parte del trial gratis) que corre en Amazon Linux y se encarga del proceso de ETL. Allí se encuentra el script [etl_bd.py](etl_bd.py) que se ejecuta diariamente a las 6:oo UTC programado con un cron (0 6 * * * ). Se llama el API de la fuente de datos con los filtros requeridos de fecha, se ajusta a una forma estructurada y se envía a la base de datos
 - (2) Instancia RDS db.t2.micro (Hace parte del trial gratis) con motor Postgresql que tiene la tabla creada a partir de el script [query_tabla.sql](query_tabla.sql)
 - (3) Se abren algunos caminos para poder acceder a la base de datos desde IPs específicas y poder aplicar analítica para proyectos que lo requieran mas adelante
