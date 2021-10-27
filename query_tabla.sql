@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT EXISTS public.covid
+(
+    ciudad_municipio integer,
+    ciudad_municipio_nom text COLLATE pg_catalog."default",
+    departamento integer,
+    departamento_nom text COLLATE pg_catalog."default",
+    edad integer,
+    estado text COLLATE pg_catalog."default",
+    fecha_de_notificaci_n date,
+    fecha_diagnostico date,
+    fecha_inicio_sintomas date,
+    fecha_muerte date,
+    fecha_recuperado date,
+    fecha_reporte_web date,
+    fuente_tipo_contagio text COLLATE pg_catalog."default",
+    id_de_caso integer,
+    nom_grupo_ text COLLATE pg_catalog."default",
+    pais_viajo_1_cod integer,
+    pais_viajo_1_nom text COLLATE pg_catalog."default",
+    per_etn_ integer,
+    recuperado text COLLATE pg_catalog."default",
+    sexo text COLLATE pg_catalog."default",
+    tipo_recuperacion text COLLATE pg_catalog."default",
+    ubicacion text COLLATE pg_catalog."default",
+    unidad_medida integer
+)
